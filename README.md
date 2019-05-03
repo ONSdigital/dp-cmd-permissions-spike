@@ -5,6 +5,14 @@
 - Wrap the route `handlerFunc` in the `permission.RequireViewer` or `permission.RequireEditor` as required.
 - The permission wrapper will send the identity in the context to zebedee to determined if the request should proceed
 
+Requires:
+- A service auth token
+
+Or
+
+- A Florence auth token
+- A collection ID (if user is not an editor or admin)
+- A dataset ID (if user is not an editor or admin)
 
 ```go
 func main() {
