@@ -27,7 +27,10 @@ func main() {
         middleware = middleware.Append(identity.Handler(cfg.ZebedeeURL))
     }
 
-    router.HandleFunc("/datasets/{dataset_id}", permissions.RequireViewer(GetDataset()))
+    router.HandleFunc("/datasets/{dataset_id}", permissions.RequireViewer(GetDataset())).Methods("GET")
+    router.HandleFunc("/datasets/{dataset_id}", permissions.RequireEditor(CreateDataset())).Methods("POST")
+    router.HandleFunc("/datasets/{dataset_id}", permissions.RequireEditor(UpdateDataset())).Methods("PUT")
+    router.HandleFunc("/datasets/{dataset_id}", permissions.RequireEditor(DeleteDataset())).Methods("DELETE")
     ...
 }
 ```
