@@ -9,7 +9,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func IsViewer(handler func(http.ResponseWriter, *http.Request)) http.HandlerFunc {
+func RequireViewer(handler func(http.ResponseWriter, *http.Request)) http.HandlerFunc {
 	cli := http.Client{Timeout: 5 * time.Second}
 
 	return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
